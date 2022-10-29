@@ -10,7 +10,7 @@ import seaborn as sns
 st.write("This project was prepared by Group 2 For BC2406")
 image = Image.open('hands_holding_animated_heart.jpg')
 
-st.image(image,caption='ML',use_column_width=True)
+st.image(image,caption='A practical application of CART models',use_column_width=True)
 
 df = pd.read_csv('Cleveland, Hungary, Switzerland, and Long Beach.csv')
 x= df.iloc[:,:-1] 
@@ -19,7 +19,7 @@ x_train,x_test,y_train,y_test =train_test_split(x,y,random_state=42, test_size=0
 # sex,cp,trestbps,chol,fbs,restecg,
 # thalach,exang,oldpeak,slope,ca,thal,target
 def get_user_input():
-    age = st.slider('What is your age? ',20,130)
+    age = st.slider('What is your age? ',20,100)
     sex = st.slider('What is your sex? ',0,1)
     cp = st.slider('What is your chest pain type? ',0,3)
     trestbps = st.slider('Trestbps:-',0,190)
