@@ -8,7 +8,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 st.write("This project was prepared by Group 2 For BC2406")
-image = Image.open('hands_holding_animated_heart.jpg')
+image = Image.open('https://github.com/ngjunlong9651/BC2406Demo/blob/main/ntu-placeholder-d.jpg')
 
 st.image(image,caption='A practical application of CART models',use_column_width=True)
 
