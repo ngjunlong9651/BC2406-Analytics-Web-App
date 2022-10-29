@@ -7,7 +7,7 @@ from PIL import Image
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-st.write("HEART DISEASE PREDICTION USING MACHINE LEARNING!")
+st.write("This project was prepared by Group 2 For BC2406")
 image = Image.open('hands_holding_animated_heart.jpg')
 
 st.image(image,caption='ML',use_column_width=True)
@@ -19,9 +19,9 @@ x_train,x_test,y_train,y_test =train_test_split(x,y,random_state=42, test_size=0
 # sex,cp,trestbps,chol,fbs,restecg,
 # thalach,exang,oldpeak,slope,ca,thal,target
 def get_user_input():
-    age = st.slider('Age:-',20,130)
-    sex = st.slider('Sex:-',1,0)
-    cp = st.slider('Cp:-',0,3)
+    age = st.slider('What is your age? ',20,100)
+    sex = st.slider('What is your sex? ',"Male","Female")
+    cp = st.slider('What is your chest pain type? ',0,3)
     trestbps = st.slider('Trestbps:-',0,190)
     chol = st.slider('Chol:-',100,400)
     fbs = st.slider('Fbs:-',0,1)
@@ -48,8 +48,8 @@ def get_user_input():
                 'thal':thal
     }
 
-    fertures = pd.DataFrame(user_data, index=[0])
-    return fertures
+    features = pd.DataFrame(user_data, index=[0])
+    return features
 user_input = get_user_input()
 st.subheader('user input:')
 st.write(user_input)
@@ -64,6 +64,6 @@ st.subheader('Classification:')
 st.write(predict)
 
 if predict==0:
-    st.write('You Do not Have Heart Disease')
+    st.write('The model predicts that you do not have heart disease. Continue to monitor your symptoms and edit this page if you feel worse')
 else:
-    st.write("You Have Heart Disease")
+    st.write("Please go to NHCS, this model predicts that you have heart disesase! We wish you all the best!")
