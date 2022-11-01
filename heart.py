@@ -21,7 +21,7 @@ x_train,x_test,y_train,y_test =train_test_split(x,y,random_state=42, test_size=0
 def get_user_input():
     age = st.slider('What is your age? ',20,100)
     sex = st.slider('What is your sex? 0 for Male, 1 for Female', 0, 1)
-    cp = st.slider('What is your chest pain type? ',0,3)
+    cp = st.slider('What is your chest pain type? 0 for Typical Anginal, 1 for Atypical Angina, 2 for Non-Anginal, 3 for Non-Anginal Chest Pain',0,3)
     trestbps = st.slider('What is your resting blood pressure? ',0,190)
     chol = st.slider('What is your cholesterol: ',100,400)
     fbs = st.slider('Is your blood sugar more than 120? 0 for No, 1 for Yes: ',0,1)
