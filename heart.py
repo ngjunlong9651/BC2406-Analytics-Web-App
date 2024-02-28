@@ -54,7 +54,6 @@ user_input = get_user_input()
 st.subheader('user input:')
 st.write(user_input)
 
-from sklearn.tree import RandomForestClassifier
 dt = RandomForestClassifier(
     n_estimators=100,  # The number of trees in the forest. More trees can improve accuracy but increases computational cost.
     criterion='gini',  # Criterion to measure the quality of a split ('gini' for Gini impurity and 'entropy' for information gain).
