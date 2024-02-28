@@ -10,7 +10,7 @@ import seaborn as sns
 st.write("This project was prepared by Group 2 For BC2406")
 image = Image.open('ntu-placeholder-d.jpg')
 
-st.image(image,caption='A practical application of CART models',use_column_width=True)
+st.image(image,caption='A practical application of Random Forests models',use_column_width=True)
 
 heart_df = pd.read_csv('cleaned_heart_data.csv')
 X = heart_df.drop('target', axis=1)
