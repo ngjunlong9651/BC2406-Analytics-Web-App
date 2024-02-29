@@ -10,14 +10,14 @@ import seaborn as sns
 st.write("This project was prepared by Group 2 For BC2406")
 image = Image.open('ntu-placeholder-d.jpg')
 
-st.image(image,caption='A practical application of Random Forests models',use_column_width=True)
+st.image(image,caption='A practical application of CART models',use_column_width=True)
 
-heart_df = pd.read_csv('cleaned_heart_data.csv')
-X = heart_df.drop('target', axis=1)
-y = heart_df['target']
-x_train,x_test,y_train,y_test =train_test_split(X,y,random_state=42, test_size=0.3,shuffle=True)
-
-
+df = pd.read_csv('Cleveland, Hungary, Switzerland, and Long Beach.csv')
+x= df.iloc[:,:-1] 
+y = df.iloc[:,13]
+x_train,x_test,y_train,y_test =train_test_split(x,y,random_state=42, test_size=0.3,shuffle=True)
+# sex,cp,trestbps,chol,fbs,restecg,
+# thalach,exang,oldpeak,slope,ca,thal,target
 def get_user_input():
     age = st.slider('What is your age? ',20,100)
     sex = st.slider('What is your sex? 0 for Male, 1 for Female', 0, 1)
@@ -54,20 +54,10 @@ user_input = get_user_input()
 st.subheader('user input:')
 st.write(user_input)
 
-dt = RandomForestClassifier(
-    n_estimators=100,  # The number of trees in the forest. More trees can improve accuracy but increases computational cost.
-    criterion='gini',  # Criterion to measure the quality of a split ('gini' for Gini impurity and 'entropy' for information gain).
-    max_depth=None,  # Maximum depth of the tree. If None, nodes are expanded until all leaves are pure or contain less than min_samples_split samples.
-    min_samples_split=20,  # The minimum number of samples required to split an internal node.
-    min_samples_leaf=10,  # The minimum number of samples required to be at a leaf node.
-    max_features='auto',  # The number of features to consider when looking for the best split. 'auto' means max_features=sqrt(n_features).
-    bootstrap=True,  # Whether bootstrap samples are used when building trees. If False, the whole dataset is used to build each tree.
-    oob_score=True,  # Whether to use out-of-bag samples to estimate the generalization accuracy.
-    random_state=42,  # Controls both the randomness of the bootstrapping of the samples and the sampling of the features.
-    n_jobs=-1,  # The number of jobs to run in parallel. -1 means using all processors.
-)
-
+from sklearn.tree import DecisionTreeClassifier
+dt = DecisionTreeClassifier(criterion='entropy',random_state=142,splitter='random',max_features='auto')
 dt.fit(x_train,y_train)
+
 predict = dt.predict(user_input)
 
 st.subheader('Classification:')
