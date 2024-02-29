@@ -2,7 +2,6 @@ import pandas as pd
 import sklearn
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
 from PIL import Image
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -54,8 +53,19 @@ user_input = get_user_input()
 st.subheader('user input:')
 st.write(user_input)
 
-from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier(criterion='entropy',random_state=142,splitter='random',max_features='auto')
+from sklearn.ensemble import RandomForestClassifier
+dt = RandomForestClassifier(
+    n_estimators=100,  # The number of trees in the forest. More trees can improve accuracy but increases computational cost.
+    criterion='gini',  # Criterion to measure the quality of a split ('gini' for Gini impurity and 'entropy' for information gain).
+    max_depth=None,  # Maximum depth of the tree. If None, nodes are expanded until all leaves are pure or contain less than min_samples_split samples.
+    min_samples_split=20,  # The minimum number of samples required to split an internal node.
+    min_samples_leaf=10,  # The minimum number of samples required to be at a leaf node.
+    max_features='auto',  # The number of features to consider when looking for the best split. 'auto' means max_features=sqrt(n_features).
+    bootstrap=True,  # Whether bootstrap samples are used when building trees. If False, the whole dataset is used to build each tree.
+    oob_score=True,  # Whether to use out-of-bag samples to estimate the generalization accuracy.
+    random_state=42,  # Controls both the randomness of the bootstrapping of the samples and the sampling of the features.
+    n_jobs=-1,  # The number of jobs to run in parallel. -1 means using all processors.
+)
 dt.fit(x_train,y_train)
 
 predict = dt.predict(user_input)
