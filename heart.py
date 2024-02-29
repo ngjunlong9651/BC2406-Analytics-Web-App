@@ -9,7 +9,7 @@ import seaborn as sns
 st.write("This project was prepared by Group 2 For BC2406")
 image = Image.open('ntu-placeholder-d.jpg')
 
-st.image(image,caption='A practical application of CART models',use_column_width=True)
+st.image(image,caption='A practical application of Random Forests models',use_column_width=True)
 
 df = pd.read_csv('Cleveland, Hungary, Switzerland, and Long Beach.csv')
 x= df.iloc[:,:-1] 
